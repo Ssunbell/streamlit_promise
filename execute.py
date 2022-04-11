@@ -112,7 +112,7 @@ class VisualizeKeywords():
                         
                     plt.xlabel('유사도', fontproperties=self.font_name)
                     plt.ylabel('단어', fontproperties=self.font_name)
-                    plt.title(f"단어 유사도: {keys[i]}", size=20)
+                    plt.title(f"단어 유사도: {keys[i]}", size=20, fontproperties=self.font_name)
         
         st.pyplot(fig)
 
