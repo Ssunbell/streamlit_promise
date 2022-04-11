@@ -85,7 +85,7 @@ class VisualizeKeywords():
      
         sns.set_palette(reversed(sns.color_palette('Purples', 20)), 20)
         
-        ax1 = sns.barplot(x=tags20_df.index, y=tags20_df['빈도'], data=tags20_df, fontproperties=self.font_name)
+        ax1 = sns.barplot(x=tags20_df.index, y=tags20_df['빈도'], data=tags20_df)
         for bar in ax1.patches:
             bar.set_width(0.5)
         
