@@ -439,7 +439,6 @@ class CategorizePromise():
 
         plt.subplot(1, 2, 1)
         plt.xticks(fontproperties=self.font_name)
-        plt.xlabel(fontproperties=self.font_name)
         ax = sns.countplot(x=df['주제'])
         for bar in ax.patches:
             bar.set_width(0.5)
