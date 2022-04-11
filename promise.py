@@ -7,7 +7,11 @@ import execute
 
 # root_path = '/Users/junho/Desktop/server/data/'
 root_path = './data/'
-pre = preprocessing
+@st.experimental_memo ### 전처리 클래스 ###
+def call_preprocess():
+    pre = preprocessing
+    return pre
+pre = call_preprocess()
 tokens = pre.tokens
 lines_token = pre.lines_token
 promise140 = pre.promise140
