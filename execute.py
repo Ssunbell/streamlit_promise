@@ -492,7 +492,7 @@ class CategorizePromise():
 
         df.plot(kind='bar', stacked=True, color=colors, ax=ax)
         plt.xticks(rotation='0', fontproperties=self.font_name)
-        plt.legend(frameon=True, shadow=True, loc=0, fontproperties=self.font_name)
+        plt.legend(frameon=True, shadow=True, loc=0)
 
         i = 0
         j = 0
