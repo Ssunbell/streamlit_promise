@@ -14,8 +14,19 @@ def call_class():
     vk = execute.VisualizeKeywords()
     km = execute.Kmeans_Visualization()
     chap3_LSA = execute.CategorizePromise()
-    return pre, sp, vk, km, chap3_LSA
-(pre, sp, vk, km, chap3_LSA) = call_class()
+    ml = execute.ML()
+    return pre, sp, vk, km, chap3_LSA, ml
+(pre, sp, vk, km, chap3_LSA, ml) = call_class()
+@st.experimental_memo
+def LDA():
+    with open(f'{root_path}lda.html', 'r') as f:
+        html_string = f.read()
+        return html_string
+html_string = LDA()
+@st.experimental_memo
+def umap(root_path, number):
+    with Image.open(f'{root_path}umap/umap_{number}.png') as f:
+        return f
 tokens = pre.tokens
 lines_token = pre.lines_token
 promise140 = pre.promise140
@@ -129,8 +140,6 @@ elif chapter == '주제 분류':
         st.markdown('📌 오른쪽 위의 λ값이 0에 가까울수록 그 군집만의 특징적인 단어가 나타나고, 1에 가까울수록 전체 공약집에서 가장 많은 빈도수를 차지한 단어가 해당 군집에서 차지하는 정도를 나타냅니다.')
         st.markdown('📌 왼쪽 위에 숫자를 입력하면 해당 군집에 대한 정보를 보여줍니다. LDA를 이용한 사후 분석 결과 최적의 군집 개수는 7개이며, 각 군집에 대한 주제는 다음과 같습니다.')
         st.markdown('> ###### 1️⃣ 평화/안보  2️⃣ 고용/일자리  3️⃣ 주택/부동산  4️⃣ 선거  5️⃣ 법률/제도  6️⃣ 사회보장서비스  7️⃣ 산업')
-        with open(f'{root_path}lda.html', 'r') as f:
-            html_string = f.read()
         components.html(html_string,width=1300,height=800)
 
 # 클러스터링
@@ -174,9 +183,7 @@ elif chapter == '클러스터링':
         options=[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         value=4)
         st.markdown('> 저희의 분석 결과 최적의 군집 개수는 4 입니다.')
-        with Image.open(f'{root_path}umap/umap_{number}.png') as f:
-            st.image(f)
-        
+        st.image(umap(root_path, number))
 
 # 추천
 elif chapter == '후보자/공약 추천':
@@ -193,7 +200,7 @@ elif chapter == '후보자/공약 추천':
         st.markdown('#### 👇 사용자의 관심사를 입력하면 그 관심사와 일치하는 후보를 추천합니다.')
         target = st.text_input('', value='인공 지능')
         if target:
-            for i in execute.ML().pred(target):
+            for i in ml.pred(target):
                 if i == '적용된 키워드가 없으므로 다시 검색해 주세요.':
                     st.warning('적용된 키워드가 없습니다 다시 입력해주세요.😅')
                 else:
@@ -208,7 +215,11 @@ elif chapter == '후보자/공약 추천':
         number = st.select_slider('',
         options=[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         value=4)
-        ku = execute.User_Kmeans(user_input)
+        @st.experimental_singleton
+        def call_ku(user_input):
+            ku = execute.User_Kmeans(user_input)
+            return ku
+        ku = call_ku(user_input)
         st.set_option('deprecation.showPyplotGlobalUse', False)
         st.pyplot(ku.UMAP_show(number))
 
