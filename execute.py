@@ -85,11 +85,11 @@ class VisualizeKeywords():
      
         sns.set_palette(reversed(sns.color_palette('Purples', 20)), 20)
         
-        ax1 = sns.barplot(x=tags20_df.index, y=tags20_df['빈도'], data=tags20_df)
+        ax1 = sns.barplot(x=tags20_df.index, y=tags20_df['빈도'], data=tags20_df, fontproperties=self.font_name)
         for bar in ax1.patches:
             bar.set_width(0.5)
         
-        plt.xticks(rotation='45') 
+        plt.xticks(rotation='45', fontproperties=self.font_name) 
 
         if num:
             sents_clear = self.lines_token[num-1]
@@ -105,7 +105,7 @@ class VisualizeKeywords():
                     st.warning(f"정책 공약에 '{keys[i]}'이/가 존재하지 않거나 그 수가 너무 적습니다.")
                 else:
                     fig.add_subplot(2, 2, i + 3)
-                    ax2 = sns.barplot(y=df[0], x=df[1])
+                    ax2 = sns.barplot(y=df[0], x=df[1], fontproperties=self.font_name)
                     
                     for bar in ax2.patches:
                         bar.set_height(0.5)
@@ -141,15 +141,15 @@ class VisualizeKeywords():
         colors = ['royalblue', 'crimson', 'gold', 'sandybrown']
 
         ax1 = fig.add_subplot(1, 2, 1)
-        df.plot(kind='bar', stacked=True, color=colors, ax=ax1)
-        plt.xticks(rotation='45')
+        df.plot(kind='bar', stacked=True, color=colors, ax=ax1,fontproperties=self.font_name)
+        plt.xticks(rotation='45', fontproperties=self.font_name)
         plt.legend(frameon=True, shadow=True)
-        plt.title('후보자별 키워드 등장 횟수', fontsize=20)
+        plt.title('후보자별 키워드 등장 횟수', fontsize=20, fontproperties=self.font_name)
 
         ax2 = fig.add_subplot(1, 2, 2)
-        df_per.plot(kind='bar', stacked=True, color=colors, ax=ax2)
-        plt.xticks(rotation='45')
-        plt.title('후보자별 키워드 등장 비율', fontsize=20)
+        df_per.plot(kind='bar', stacked=True, color=colors, ax=ax2, fontproperties=self.font_name)
+        plt.xticks(rotation='45', fontproperties=self.font_name)
+        plt.title('후보자별 키워드 등장 비율', fontsize=20, fontproperties=self.font_name)
         plt.legend().remove()
 
         i = 0
