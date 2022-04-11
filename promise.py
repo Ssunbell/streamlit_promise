@@ -64,7 +64,7 @@ elif chapter == '후보자 공약 분석':
         i = candidates.index(candidate)
         if candidate != '전체':
             counts = Counter(tokens[i-1])
-            vk.show_graphs(counts, i-1)
+            vk.show_graphs(counts, i)
         else:
             counts_for_all = Counter(sum(tokens, []))
             vk.show_graphs(counts_for_all)

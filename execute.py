@@ -101,7 +101,7 @@ class VisualizeKeywords():
         plt.xticks(rotation='45') 
 
         if num:
-            sents_clear = self.lines_token[num]
+            sents_clear = self.lines_token[num-1]
   
             keys = ['추진', '폐지']
             model = Word2Vec(sents_clear, min_count=4, seed=65)
