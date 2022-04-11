@@ -46,6 +46,7 @@ candidates = ['기호 1번', '기호 2번', '기호 3번', '기호 4번', '기�
 # if platform.system() == 'Darwin':
 font_location = root_path + 'malgun.ttf'
 font_name = font_manager.FontProperties(fname=font_location).get_name()
+plt.rcParams["font.family"] = "malgunGothic"
 # elif platform.system() == 'Windows':
 #     font_location = 'C:\Windows\Fonts\malgun.ttf'
 #     font_name = font_manager.FontProperties(fname=font_location).get_name()
