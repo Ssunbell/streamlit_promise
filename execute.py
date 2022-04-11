@@ -54,7 +54,6 @@ class VisualizeKeywords():
         self.lines_token = lines_token
 
         sns.set_style('whitegrid')
-        plt.rc('font', family=self.font_name)
 
     def show_graphs(self, text_counts, num=None):
         tags = text_counts.most_common(100)
