@@ -106,7 +106,7 @@ class VisualizeKeywords():
                 else:
                     fig.add_subplot(2, 2, i + 3)
                     ax2 = sns.barplot(y=df[0], x=df[1])
-                    plt.rc('font', family=self.font_name.get_name())
+                    plt.yticks(fontproperties=self.font_name) 
                     
                     for bar in ax2.patches:
                         bar.set_height(0.5)
