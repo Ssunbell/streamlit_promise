@@ -15,12 +15,15 @@ promise140 = pre.promise140
 candidates = ['전체', '기호 1번', '기호 2번', '기호 3번', '기호 4번', '기호 5번', '기호 6번', '기호 7번',
               '기호 8번', '기호 9번', '기호 10번', '기호 11번', '기호 12번', '기호 13번', '기호 14번']
 
+@st.experimental_singleton
+def call_class():
+    sp = execute.SearchPromise()
+    vk = execute.VisualizeKeywords()
+    km = execute.Kmeans_Visualization()
+    chap3_LSA = execute.CategorizePromise()
+    return sp, vk, km, chap3_LSA
 
-sp = execute.SearchPromise()
-vk = execute.VisualizeKeywords()
-km = execute.Kmeans_Visualization()
-chap3_LSA = execute.CategorizePromise()
-sp = execute.SearchPromise()
+(sp, vk, km, chap3_LSA) = call_class()
 
 st.sidebar.header('메뉴')
 chapter = st.sidebar.selectbox('선택', ['시작', '후보자 공약 분석', '주제 분류', '클러스터링', '후보자/공약 추천'])
