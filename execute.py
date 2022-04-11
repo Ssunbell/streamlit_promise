@@ -369,10 +369,9 @@ gp.promise_map()'''
 class CategorizePromise():
     def __init__(self):
         self.font_location = root_path + 'NanumGothic.ttf'
-        self.font_name = 'Nanum Gothic'
+        self.font_name = font_manager.FontProperties(fname=self.font_location, size = 10)
 
         sns.set_style('whitegrid')
-        plt.rc('font', family=self.font_name)
 
         self.df = self.promise_reshaped()
         self.df_tokens = self.promise_tokenized()
