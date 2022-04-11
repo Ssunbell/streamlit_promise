@@ -438,8 +438,8 @@ class CategorizePromise():
         plt.suptitle(f'전체 정책 공약 분류', fontsize=40, va='bottom', fontproperties=self.font_name)
 
         plt.subplot(1, 2, 1)
-        plt.xticks(fontproperties=self.font_name)
         ax = sns.countplot(x=df['주제'])
+        plt.xticks(fontproperties=self.font_name)
         for bar in ax.patches:
             bar.set_width(0.5)
 
@@ -477,6 +477,7 @@ class CategorizePromise():
         df_selective = self.df_result[:num * 10]
 
         df = pd.crosstab(df_selective['주제'], df_selective['기호'])
+        plt.xticks(fontproperties=self.font_name)
 
         df_per = df.copy()
 
@@ -493,7 +494,6 @@ class CategorizePromise():
 
         df.plot(kind='bar', stacked=True, color=colors, ax=ax)
         plt.xticks(rotation='0', fontproperties=self.font_name)
-        plt.xlabel(fontproperties=self.font_name)
         plt.legend(frameon=True, shadow=True, loc=0, prop=self.font_name)
 
         i = 0
