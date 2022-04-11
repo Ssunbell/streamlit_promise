@@ -47,7 +47,7 @@ class VisualizeKeywords():
     def __init__(self):
         self.mask_path = pre.mask_path
         self.font_location = root_path + 'NanumGothic.ttf'
-        self.font_name = font_manager.FontProperties(fname=self.font_location, size = 10).get_name()
+        self.font_name = font_manager.FontProperties(fname=self.font_location, size = 10)
         
         lines_token_df = pd.read_csv(root_path+'lines_token.csv', converters={'0': literal_eval})
         lines_token = lines_token_df['0'].values.tolist()
@@ -70,19 +70,19 @@ class VisualizeKeywords():
         plt.subplots_adjust(left=0.125, bottom=0.1, right=0.9, top=0.9, wspace=0.2, hspace=0.35)
     
         fig.add_subplot(2, 2, 1)
-        plt.title(f'정책 공약 키워드', size=20)
+        plt.title(f'정책 공약 키워드', size=20, fontproperties=self.font_name)
         plt.axis('off')
         plt.imshow(cloud)
 
         tags20 = dict(text_counts.most_common(20))
     
         fig.add_subplot(2, 2, 2)
-        plt.xlabel('주요 단어')
-        plt.ylabel('빈도')
+        plt.xlabel('주요 단어', fontproperties=self.font_name)
+        plt.ylabel('빈도', fontproperties=self.font_name)
     
         tags20_df = pd.DataFrame(tags20.values(), index=tags20.keys(), columns=['빈도'])
         
-        plt.title(f'정책 공약 키워드 top 20', size=20)
+        plt.title(f'정책 공약 키워드 top 20', size=20, fontproperties=self.font_name)
      
         sns.set_palette(reversed(sns.color_palette('Purples', 20)), 20)
         
@@ -111,8 +111,8 @@ class VisualizeKeywords():
                     for bar in ax2.patches:
                         bar.set_height(0.5)
                         
-                    plt.xlabel('유사도')
-                    plt.ylabel('단어')
+                    plt.xlabel('유사도', fontproperties=self.font_name)
+                    plt.ylabel('단어', fontproperties=self.font_name)
                     plt.title(f"단어 유사도: {keys[i]}", size=20)
         
         st.pyplot(fig)
