@@ -42,22 +42,19 @@ root_path = './data/'
 candidates = ['기호 1번', '기호 2번', '기호 3번', '기호 4번', '기호 5번', '기호 6번', '기호 7번',
               '기호 8번', '기호 9번', '기호 10번', '기호 11번', '기호 12번', '기호 13번', '기호 14번', '전체']
 
-font_location = root_path + 'NanumGothic.ttf'
-font_name = font_manager.FontProperties(fname=font_location).get_name()
-plt.rcParams['font.family']
 
 class VisualizeKeywords():
     def __init__(self):
         self.mask_path = pre.mask_path
-        self.font_location = font_location
-        self.font_name = font_name
+        self.font_location = root_path + 'NanumGothic.ttf'
+        self.font_name = font_manager.FontProperties(fname=self.font_location, size = 10).get_name()
         
         lines_token_df = pd.read_csv(root_path+'lines_token.csv', converters={'0': literal_eval})
         lines_token = lines_token_df['0'].values.tolist()
         self.lines_token = lines_token
 
         sns.set_style('whitegrid')
-        rc('font', family=self.font_name)
+        plt.rc('font', family=self.font_name)
 
     def show_graphs(self, text_counts, num=None):
         tags = text_counts.most_common(100)
@@ -371,10 +368,11 @@ gp.promise_map()'''
 # 3.1
 class CategorizePromise():
     def __init__(self):
-        self.font_name = font_name
+        self.font_location = root_path + 'NanumGothic.ttf'
+        self.font_name = 'Nanum Gothic'
 
         sns.set_style('whitegrid')
-        rc('font', family=self.font_name)
+        plt.rc('font', family=self.font_name)
 
         self.df = self.promise_reshaped()
         self.df_tokens = self.promise_tokenized()
