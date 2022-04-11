@@ -452,7 +452,7 @@ class CategorizePromise():
                 autopct='%.1f%%',
                 colors=colors,
                 wedgeprops=dict(width=0.6))
-        plt.legend(labels=df_groupby.index, loc='upper right')
+        plt.legend(labels=df_groupby.index, loc='upper right', fontproperties=self.font_name)
         plt.show()
         st.pyplot(fig)
 
@@ -467,8 +467,8 @@ class CategorizePromise():
             plt.pie(df_groupby['주제_idx'],
                     autopct='%.1f%%',
                     wedgeprops=dict(width=0.6))
-            plt.legend(labels=df_groupby.index)
-            plt.title(f'기호 {i + 1}번', size=20)
+            plt.legend(labels=df_groupby.index, fontproperties=self.font_name)
+            plt.title(f'기호 {i + 1}번', size=20, fontproperties=self.font_name)
         plt.show()
         st.pyplot(fig)
 
@@ -491,8 +491,8 @@ class CategorizePromise():
         ax = fig.add_subplot(1, 1, 1)
 
         df.plot(kind='bar', stacked=True, color=colors, ax=ax)
-        plt.xticks(rotation='0')
-        plt.legend(frameon=True, shadow=True, loc=0)
+        plt.xticks(rotation='0', fontproperties=self.font_name)
+        plt.legend(frameon=True, shadow=True, loc=0, fontproperties=self.font_name)
 
         i = 0
         j = 0
