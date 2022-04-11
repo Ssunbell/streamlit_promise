@@ -141,7 +141,7 @@ class VisualizeKeywords():
         colors = ['royalblue', 'crimson', 'gold', 'sandybrown']
 
         ax1 = fig.add_subplot(1, 2, 1)
-        df.plot(kind='bar', stacked=True, color=colors, ax=ax1,fontproperties=self.font_name)
+        df.plot(kind='bar', stacked=True, color=colors, ax=ax1)
         plt.xticks(rotation='45', fontproperties=self.font_name)
         plt.legend(frameon=True, shadow=True)
         plt.title('후보자별 키워드 등장 횟수', fontsize=20, fontproperties=self.font_name)
