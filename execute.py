@@ -44,6 +44,7 @@ candidates = ['기호 1번', '기호 2번', '기호 3번', '기호 4번', '기�
 
 font_location = root_path + 'NanumGothic.ttf'
 font_name = font_manager.FontProperties(fname=font_location).get_name()
+plt.rcParams['font.family']
 
 class VisualizeKeywords():
     def __init__(self):
