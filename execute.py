@@ -147,7 +147,7 @@ class VisualizeKeywords():
         plt.title('후보자별 키워드 등장 횟수', fontsize=20, fontproperties=self.font_name)
 
         ax2 = fig.add_subplot(1, 2, 2)
-        df_per.plot(kind='bar', stacked=True, color=colors, ax=ax2, fontproperties=self.font_name)
+        df_per.plot(kind='bar', stacked=True, color=colors, ax=ax2)
         plt.xticks(rotation='45', fontproperties=self.font_name)
         plt.title('후보자별 키워드 등장 비율', fontsize=20, fontproperties=self.font_name)
         plt.legend().remove()
