@@ -494,7 +494,7 @@ class CategorizePromise():
         ax = fig.add_subplot(1, 1, 1)
 
         df.plot(kind='bar', stacked=True, color=colors, ax=ax)
-        plt.xticks(rotation=45, fontproperties=self.font_name)
+        plt.xticks(rotation=60, fontproperties=self.font_name)
         plt.xlabel('주제', fontproperties=self.font_name)
         plt.legend(frameon=True, shadow=True, loc=0, prop=self.font_name)
 
