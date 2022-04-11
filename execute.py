@@ -433,12 +433,12 @@ class CategorizePromise():
         plt.subplots_adjust(left=0.1, bottom=0.1, right=0.9, top=0.9, wspace=0.2, hspace=0.35)
 
         sns.set_palette('Set2', 6)
-        plt.xticks(fontproperties=self.font_name)
 
         df = self.df_result
         plt.suptitle(f'전체 정책 공약 분류', fontsize=40, va='bottom', fontproperties=self.font_name)
 
         plt.subplot(1, 2, 1)
+        plt.xticks(fontproperties=self.font_name)
         ax = sns.countplot(x=df['주제'])
         for bar in ax.patches:
             bar.set_width(0.5)
@@ -452,7 +452,6 @@ class CategorizePromise():
                 autopct='%.1f%%',
                 colors=colors,
                 wedgeprops=dict(width=0.6))
-        plt.xticks(fontproperties=self.font_name)
         plt.legend(labels=df_groupby.index, loc='upper right')
         plt.show()
         st.pyplot(fig)
