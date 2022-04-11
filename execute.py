@@ -436,7 +436,7 @@ class CategorizePromise():
         sns.set_palette('Set2', 6)
 
         df = self.df_result
-        plt.suptitle(f'전체 정책 공약 분류', fontsize=40, va='bottom')
+        plt.suptitle(f'전체 정책 공약 분류', fontsize=40, va='bottom', fontproperties=self.font_name)
 
         plt.subplot(1, 2, 1)
         ax = sns.countplot(x=df['주제'])
@@ -452,7 +452,7 @@ class CategorizePromise():
                 autopct='%.1f%%',
                 colors=colors,
                 wedgeprops=dict(width=0.6))
-        plt.legend(labels=df_groupby.index, loc='upper right', fontproperties=self.font_name)
+        plt.legend(labels=df_groupby.index, loc='upper right')
         plt.show()
         st.pyplot(fig)
 
