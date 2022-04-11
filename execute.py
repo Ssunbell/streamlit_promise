@@ -33,7 +33,6 @@ import platform
 from ast import literal_eval
 import streamlit as st
 
-plt.rcParams['axes.unicode_minus'] = False
 okt = Okt()
 
 import preprocessing
@@ -43,13 +42,8 @@ root_path = './data/'
 candidates = ['기호 1번', '기호 2번', '기호 3번', '기호 4번', '기호 5번', '기호 6번', '기호 7번',
               '기호 8번', '기호 9번', '기호 10번', '기호 11번', '기호 12번', '기호 13번', '기호 14번', '전체']
 
-# if platform.system() == 'Darwin':
 font_location = root_path + 'malgun.ttf'
 font_name = font_manager.FontProperties(fname=font_location).get_name()
-plt.rcParams["font.family"] = "Malgun Gothic"
-# elif platform.system() == 'Windows':
-#     font_location = 'C:\Windows\Fonts\malgun.ttf'
-#     font_name = font_manager.FontProperties(fname=font_location).get_name()
 
 class VisualizeKeywords():
     def __init__(self):
