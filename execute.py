@@ -105,7 +105,7 @@ class VisualizeKeywords():
                     st.warning(f"정책 공약에 '{keys[i]}'이/가 존재하지 않거나 그 수가 너무 적습니다.")
                 else:
                     fig.add_subplot(2, 2, i + 3)
-                    ax2 = sns.barplot(y=df[0], x=df[1], fontproperties=self.font_name)
+                    ax2 = sns.barplot(y=df[0], x=df[1])
                     
                     for bar in ax2.patches:
                         bar.set_height(0.5)
