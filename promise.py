@@ -25,11 +25,11 @@ def LDA():
 html_string = LDA()
 @st.experimental_memo
 def umap():
-    image=[]
+    umap_image=[]
     for number in range(2,15):
-        image.append(Image.open(f'{root_path}umap/umap_{number}.png'))
-    return image
-image = umap()
+        umap_image.append(Image.open(f'{root_path}umap/umap_{number}.png'))
+    return umap_image
+umap_image = umap()
 tokens = pre.tokens
 lines_token = pre.lines_token
 promise140 = pre.promise140
@@ -186,7 +186,7 @@ elif chapter == '클러스터링':
         options=[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         value=4)
         st.markdown('> 저희의 분석 결과 최적의 군집 개수는 4 입니다.')
-        st.image(image[number])
+        st.image(umap_image[number])
 
 # 추천
 elif chapter == '후보자/공약 추천':
