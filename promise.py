@@ -183,7 +183,8 @@ elif chapter == '클러스터링':
         options=[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         value=4)
         st.markdown('> 저희의 분석 결과 최적의 군집 개수는 4 입니다.')
-        st.image(umap(root_path, number))
+        image = umap(root_path, number)
+        st.image(image)
 
 # 추천
 elif chapter == '후보자/공약 추천':
