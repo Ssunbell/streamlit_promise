@@ -224,7 +224,7 @@ elif chapter == '후보자/공약 추천':
             return ku
         ku = call_ku(user_input)
         st.set_option('deprecation.showPyplotGlobalUse', False)
-        st.pyplot(ku.UMAP_show(number))
+        st.pyplot(ku.UMAP_show(number-2))
 
     elif sub_chapter == '코사인 유사도':
         st.subheader('💡 코사인 유사도를 이용한 공약 추천')
