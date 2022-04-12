@@ -18,20 +18,16 @@ def call_class():
     return pre, sp, vk, km, chap3_LSA, ml
 (pre, sp, vk, km, chap3_LSA, ml) = call_class()
 @st.experimental_memo
-def LDA_folium():
+def call_data():
     with open(f'{root_path}lda.html', 'r') as f:
         html_string = f.read()
     with open(f"{root_path}folium.html", 'r', encoding='utf-8') as f:
-        html_folium = f.read() 
-        return html_string, html_folium
-html_string, html_folium = LDA_folium()
-@st.experimental_memo
-def umap():
+        html_folium = f.read()
     umap_image=[]
     for number in range(2,15):
         umap_image.append(Image.open(f'{root_path}umap/umap_{number}.png'))
-    return umap_image
-umap_image = umap()
+        return html_string, html_folium, umap_image
+html_string, html_folium, umap_image = call_data()
 tokens = pre.tokens
 lines_token = pre.lines_token
 promise140 = pre.promise140
