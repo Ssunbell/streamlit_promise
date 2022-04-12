@@ -18,11 +18,13 @@ def call_class():
     return pre, sp, vk, km, chap3_LSA, ml
 (pre, sp, vk, km, chap3_LSA, ml) = call_class()
 @st.experimental_memo
-def LDA():
+def LDA_folium():
     with open(f'{root_path}lda.html', 'r') as f:
         html_string = f.read()
-        return html_string
-html_string = LDA()
+    with open(f"{root_path}folium.html", 'r', encoding='utf-8') as f:
+        html_folium = f.read() 
+        return html_string, html_folium
+html_string, html_folium = LDA_folium()
 @st.experimental_memo
 def umap():
     umap_image=[]
@@ -104,8 +106,7 @@ elif chapter == '후보자 공약 분석':
         st.markdown('📌 기호 1, 2, 3번 후보자들의 지역 공약 자료집을 활용하여 시각화해 보았습니다.')
         st.markdown('📌 지역 공약 자료집을 활용하여 지역별로 핵심 공약을 분류한 다음, 지도 위에 표현해 보았습니다.')
         st.markdown('📌 지역별 인구수를 나타냄으로써 해당 지역의 유권자 수 차이를 확인할 수 있습니다.')
-        with open(f"{root_path}folium.html", 'r', encoding='utf-8') as f:
-            html_string = f.read() 
+
         components.html(html_string, width= 800, height= 720)
 
 
@@ -143,7 +144,7 @@ elif chapter == '주제 분류':
         st.markdown('📌 오른쪽 위의 λ값이 0에 가까울수록 그 군집만의 특징적인 단어가 나타나고, 1에 가까울수록 전체 공약집에서 가장 많은 빈도수를 차지한 단어가 해당 군집에서 차지하는 정도를 나타냅니다.')
         st.markdown('📌 왼쪽 위에 숫자를 입력하면 해당 군집에 대한 정보를 보여줍니다. LDA를 이용한 사후 분석 결과 최적의 군집 개수는 7개이며, 각 군집에 대한 주제는 다음과 같습니다.')
         st.markdown('> ###### 1️⃣ 평화/안보  2️⃣ 고용/일자리  3️⃣ 주택/부동산  4️⃣ 선거  5️⃣ 법률/제도  6️⃣ 사회보장서비스  7️⃣ 산업')
-        components.html(html_string,width=1300,height=800)
+        components.html(html_folium,width=1300,height=800)
 
 # 클러스터링
 elif chapter == '클러스터링':
